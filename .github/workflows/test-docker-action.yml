@@ -1,0 +1,16 @@
+name: Test Docker Action Workflow
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Test Hello World Docker Actions SFV-intel-world-open
+        id: hello
+        uses: dosuken123/github-action-test-docker@v1
+        with:
+          who-to-greet: 'Dosuken'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
